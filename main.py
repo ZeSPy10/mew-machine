@@ -4,7 +4,7 @@ import prints
 
 # Stuff to get the Savefile
 PWD = os.getcwd()
-SAVE_FILE_PATH = sys.argv[1]
+SAVE_FILE_PATH = E:\POKEMONB
 
 # Useful Memory Addresses
 POKEMON_PARTY_AMOUNT_ADDRESS = 0x2F2C
@@ -34,16 +34,37 @@ if not os.path.isabs(SAVE_FILE_PATH):
     SAVE_FILE_PATH = os.path.join(PWD, SAVE_FILE_PATH)
 
 if(os.path.exists(SAVE_FILE_PATH) == False):
-    print("Error: File does not exist. Please use a valid path to a .sav file.")
-    sys.exit(1)
+    PWD = os.getcwd()
+    SAVE_FILE_PATH = E:\POKEMONR
+    
+    POKEMON_PARTY_AMOUNT_ADDRESS = 0x2F2C
+    
+    POKEMON_PARTY_SPECIES_ID_START = 0x2F2D
+    
+    POKEMON_PARTY_OFFSET_START = 0x2F34
+    POKEMON_PARTY_OFFSET = 0x2C
+    
+    POKEMON_TRAINER_NAME_START = 0x303C
+    POKEMON_NICKNAME_START = 0x307E
+    POKEMON_TRAINER_AND_NICK_NAME_MAX_SIZE = 0xB
+    
+    CHECKSUM_BLOCK_START = 0x2598
+    CHECKSUM_BLOCK_END = 0x3523
+    
+    CAUGHT_OFFSET_START = 0x25A3
+    SEEN_OFFSET_START = 0x25B6
+    CAUGHT_SEEN_SIZE = 0x13
+    
+    # Other useful stuff
+    END_CHARACTER = 0x50
+
+    if(os.path.exists(SAVE_FILE_PATH) == False):
+        print("SAVE FILE NOT FOUND")
+        sys.exit(1)
 
 if(os.path.getsize(SAVE_FILE_PATH) != 0x8000):
     print("Error: File is not a valid save file.")
     sys.exit(1)
-
-def ask_for_permission():
-    print("This script will modify your save file progress. Are you sure you want to continue? (y/n)", end=" ")
-    return input() == "y"
 
 def is_captured_or_seen(captured_or_seen, entry):
     byte = captured_or_seen[entry // 8]
@@ -171,9 +192,6 @@ def generate_mew_data():
 
 def main():
     prints.start()
-
-    if not ask_for_permission():
-        return
     
     with open(SAVE_FILE_PATH, 'rb+') as f:
         ram = bytearray(f.read())
