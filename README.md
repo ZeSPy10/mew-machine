@@ -1,5 +1,7 @@
 # Mew Machine
 
+ZeSpy10- I have edited the script to automatically get the save file from a USB E: device. It works with Pokemon blue and red.
+
 A Python recreation of the [Mew Machine](#1-what-is-the-mew-machine) software. This script adds a nearly legit YOSHIRA Mew to your save file when you have a open slot in your party.
 
 ## Usage
