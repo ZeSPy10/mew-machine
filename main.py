@@ -40,6 +40,8 @@ if(os.path.exists(SAVE_FILE_PATH) == False):
             print("Error: File does not exist. Please use a valid path to a .sav file.")
             sys.exit(1)
 
+print("Path Success")
+
 if(os.path.getsize(SAVE_FILE_PATH) != 0x8000):
     print("Error: File is not a valid save file.")
     sys.exit(1)
