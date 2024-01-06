@@ -4,8 +4,7 @@ import prints
 
 # Stuff to get the Savefile
 PWD = os.getcwd()
-SAVE_FILE_PATH = sys.argv[1]
-
+SAVE_FILE_PATH = E:/POKEMONB
 # Useful Memory Addresses
 POKEMON_PARTY_AMOUNT_ADDRESS = 0x2F2C
 
@@ -34,8 +33,12 @@ if not os.path.isabs(SAVE_FILE_PATH):
     SAVE_FILE_PATH = os.path.join(PWD, SAVE_FILE_PATH)
 
 if(os.path.exists(SAVE_FILE_PATH) == False):
-    print("Error: File does not exist. Please use a valid path to a .sav file.")
-    sys.exit(1)
+    SAVE_FILE_PATH = E:/POKEMONR
+    if(os.path.exists(SAVE_FILE_PATH) == False):
+        SAVE_FILE_PATH = E:/POKEMONY
+        if(os.path.exists(SAVE_FILE_PATH) == False):
+            print("Error: File does not exist. Please use a valid path to a .sav file.")
+            sys.exit(1)
 
 if(os.path.getsize(SAVE_FILE_PATH) != 0x8000):
     print("Error: File is not a valid save file.")
