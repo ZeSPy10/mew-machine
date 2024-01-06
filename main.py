@@ -44,10 +44,6 @@ if(os.path.getsize(SAVE_FILE_PATH) != 0x8000):
     print("Error: File is not a valid save file.")
     sys.exit(1)
 
-def ask_for_permission():
-    print("This script will modify your save file progress. Are you sure you want to continue? (y/n)", end=" ")
-    return input() == "y"
-
 def is_captured_or_seen(captured_or_seen, entry):
     byte = captured_or_seen[entry // 8]
     bit = entry % 8
